@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: "eclipse"
+
+repositories {
+  mavenCentral()
+}
+
+sourceSets {
+  main
+}
+
+dependencies {
+  implementation group: 'io.projectreactor.netty', name: 'reactor-netty-core', version: '1.2.4'
+  implementation group: 'io.projectreactor.netty', name: 'reactor-netty-http', version: '1.2.4'
+}
+
+configurations {
+  compile
+}
+
+jar {
+  manifest {
+    attributes (
+    'Main-Class' : 'example.MVP'
+    )
+  }
+  archiveFileName = "mvp-test.jar"
+  duplicatesStrategy = "exclude"
+  from(configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }) {
+    exclude("META-INF/*.RSA", "META-INF/*.SF", "META-INF/*.DSA")
+  }
+}
