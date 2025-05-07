@@ -1,3 +1,14 @@
+.project
+.gradle/
+.DS_Store
+bin/
+build/
+test2.sh
+test2.cfg
+test3.sh
+test3.cfg
+*.txt
+
 # Compiled class file
 *.class
 
