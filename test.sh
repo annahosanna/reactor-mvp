@@ -8,7 +8,7 @@ hostname=$(hostname)
   for j in {1..5000}
     do
       sleep 0.0000001
-      curl http://${hostname}/fortune -d "key=k1&value=v1" -H "Content-Type:application/x-www-form-urlencoded" -o ./log.txt 2>./log.txt >/dev/null &
+      curl http://${hostname}/fortune -d "key=k1&value=v1" -H "Content-Type:application/x-www-form-urlencoded" 2>>./log.txt >/dev/null &
     done
   time4=$(date +%s)
   echo "Connections per second:"

@@ -1,8 +1,10 @@
 #!/bin/bash
 
+echo "This will take a minute"
+
 # Make test2.sh
 inst=100
-reps=10000
+reps=7000
 totalreps=`awk "BEGIN { print (${inst} * ${reps}) }"`".0"
 
 cat << EOF1 > ./test2.sh
@@ -20,7 +22,7 @@ done
 EOF1
 
 echo "count=\`ps -ax | grep \"curl\" | wc -l | tr -d '[:blank:]'\`" >> ./test2.sh
-echo 'while [ $count -gt 1 ]' >> ./test2.sh
+echo 'while [ $count -gt 2 ]' >> ./test2.sh
 echo 'do' >> ./test2.sh
 echo '  echo "Count: $count"' >> ./test2.sh
 echo "  count=\`ps -ax | grep \"curl\" | wc -l | tr -d '[:blank:]'\`" >> ./test2.sh
@@ -62,3 +64,5 @@ do
   echo "url = http://${hostname}/fortune" >> ./test2.cfg
   count=$((count + 1))
 done
+
+chmod +x ./test2.sh
