@@ -33,10 +33,7 @@ public final class MVP {
       .wiretap(false)
       .compress(false)
       .protocol(HttpProtocol.HTTP11)
-      // idle uncomment, comment read and request
-      // .idleTimeout(Duration.ofMillis(60000))
       .readTimeout(Duration.ofMillis(60000))
-      // .requestTimeout(Duration.ofMillis(60000))
       .option(ChannelOption.SO_BACKLOG, 65534)
       .option(ChannelOption.SO_RCVBUF, 1024 * 1024)
       .option(ChannelOption.SO_REUSEADDR, true);
